@@ -1,12 +1,14 @@
 package businessEntity.dao;
 
+import java.sql.SQLException;
+
 import businessEntity.dto.T_USER;
 
 public class InsertT_USER extends DaoConnectionManeger {
 
 	private static final String insertSql = "INSERT INTO T_USER values(?, ?, ?, ?, ?)";
 
-	public void insertUserTable(T_USER tUser) throws Exception {
+	public void insertUserTable(T_USER tUser) throws SQLException {
 		try {
 			ps = conn.prepareStatement(insertSql);
 			ps.setString(1, tUser.USER_ID);
@@ -26,7 +28,6 @@ public class InsertT_USER extends DaoConnectionManeger {
 		} catch (Exception e) {
 			e.printStackTrace();
 			conn.rollback();
-			throw e;
 		}
 	}
 }

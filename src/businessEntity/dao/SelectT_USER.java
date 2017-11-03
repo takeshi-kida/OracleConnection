@@ -7,9 +7,10 @@ import java.util.List;
 import businessEntity.dto.T_USER;
 
 public class SelectT_USER extends DaoConnectionManeger {
+
 	private static final String selectAllSql = "select USER_ID, PASSWORD, USER_NAME, AGE, ORG_CD from T_USER";
 
-	public static List<T_USER> selectT_USER() throws Exception {
+	public static List<T_USER> selectT_USER() {
 		List<T_USER> getResult = new ArrayList<T_USER>();
 
 		try {
@@ -32,7 +33,6 @@ public class SelectT_USER extends DaoConnectionManeger {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw e;
 		}
 
 		return getResult;
