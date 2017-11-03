@@ -1,9 +1,10 @@
 package businessLogic;
 
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
+
+import dto.T_USER;
 
 public class InsertOracle {
 
@@ -13,7 +14,7 @@ public class InsertOracle {
 
 	private DriverManeger dm = new DriverManeger();
 
-	public void insertUserTable(String sql, String userId, String userName, String password, int age, String orgCd ) throws Exception
+	public void insertUserTable(String sql, T_USER tUser ) throws Exception
 	{
 		try {
 			// Connectionの作成
@@ -27,11 +28,11 @@ public class InsertOracle {
 			stmt = conn.createStatement();
 
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, userId);
-			ps.setString(2, userName);
-			ps.setString(3, password);
-			ps.setInt(4, age);
-			ps.setString(5, orgCd);
+			ps.setString(1, tUser.USER_ID);
+			ps.setString(2, tUser.PASSWORD);
+			ps.setString(3, tUser.USER_NAME);
+			ps.setInt(4, tUser.AGE);
+			ps.setString(5, tUser.ORG_CD);
 
 			//INSERT文を実行する
 			int result = ps.executeUpdate();
