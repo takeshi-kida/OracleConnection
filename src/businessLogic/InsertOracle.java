@@ -18,6 +18,7 @@ public class InsertOracle {
 		try {
 			// Connectionの作成
 			conn = dm.getConnection();
+			
 
 			//オートコミットはオフにする。
 			conn.setAutoCommit(false);
