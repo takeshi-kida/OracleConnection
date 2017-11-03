@@ -1,19 +1,13 @@
 package applicationLogic;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
-
-import businessLogic.DriverManeger;
-import businessLogic.ReadCsv;
+import businessEntity.dto.T_USER;
+import businessLogic.GetData;
+import businessLogic.ReadCsv;;
 
 public class StartConnection {
 
 	public static void main(String[] args) {
 		// TODO 自動生成されたメソッド・スタブ
-		Connection conn = null;
-
-		DriverManeger dm = new DriverManeger();
 
 		try {
 
@@ -21,15 +15,12 @@ public class StartConnection {
 
 			rs.readUserCsv(args[0]);
 
-			conn = dm.getConnection();
-			// Statementの作成
-			Statement stmt = conn.createStatement();
+			GetData gd = new GetData();
 
-			// Resultsetの作成
-			ResultSet rset = stmt.executeQuery("select USER_NAME from T_USER");
 			// 取得したデータを出力する
-			while (rset.next()) {
-				System.out.println(rset.getString("USER_NAME"));
+			for (T_USER tUser : gd.getTUser())
+			{
+				System.out.println(tUser.USER_NAME);
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

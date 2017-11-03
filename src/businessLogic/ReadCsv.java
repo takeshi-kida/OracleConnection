@@ -17,7 +17,7 @@ public class ReadCsv {
 
 			BufferedReader br = new BufferedReader(new FileReader(csv));
 
-			InsertT_USER insertOracle = new InsertT_USER();
+			InsertT_USER insertTUser = new InsertT_USER();
 
 			// 最終行まで読み込む
 			String line = "";
@@ -36,7 +36,7 @@ public class ReadCsv {
 					tUser.ORG_CD = st.nextToken();
 				}
 
-				insertOracle.insertUserTable(tUser);
+				insertTUser.insertUserTable(tUser);
 			}
 			br.close();
 		} catch (FileNotFoundException e) {

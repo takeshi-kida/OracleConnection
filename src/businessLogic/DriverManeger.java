@@ -2,14 +2,10 @@ package businessLogic;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.Statement;
 
 public class DriverManeger {
 
-	Connection conn = null;
-	Statement stmt = null;
-	PreparedStatement ps = null;
+	private static Connection conn = null;
 
 	@SuppressWarnings("finally")
 	public Connection getConnection() {
