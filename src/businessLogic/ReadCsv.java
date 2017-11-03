@@ -1,4 +1,4 @@
-package businesslogic;
+package businessLogic;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -8,9 +8,9 @@ import java.io.IOException;
 import java.util.StringTokenizer;
 
 public class ReadCsv {
-	public void readUserCsv() throws Exception {
+	public void readUserCsv(String fleName) throws Exception {
 		try {
-			File csv = new File("C:\\TMP\\USER.csv"); // CSVデータファイル
+			File csv = new File(fleName); // CSVデータファイル
 
 			BufferedReader br = new BufferedReader(new FileReader(csv));
 
@@ -42,7 +42,7 @@ public class ReadCsv {
 			br.close();
 		} catch (FileNotFoundException e) {
 			// Fileオブジェクト生成時の例外捕捉
-			e.printStackTrace();  
+			e.printStackTrace();
 		} catch (IOException e) {
 			// BufferedReaderオブジェクトのクローズ時の例外捕捉
 			e.printStackTrace();

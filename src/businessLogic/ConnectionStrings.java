@@ -1,4 +1,4 @@
-package businesslogic;
+package businessLogic;
 
 public enum ConnectionStrings {
 

@@ -4,8 +4,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-import businesslogic.DriverManeger;
-import businesslogic.ReadCsv;
+import businessLogic.DriverManeger;
+import businessLogic.ReadCsv;
 
 public class StartConnection {
 
@@ -19,7 +19,7 @@ public class StartConnection {
 
 			ReadCsv rs = new ReadCsv();
 
-			rs.readUserCsv();
+			rs.readUserCsv(args[0]);
 
 			conn = dm.getConnection();
 			// Statementの作成
