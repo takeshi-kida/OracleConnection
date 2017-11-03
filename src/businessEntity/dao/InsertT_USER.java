@@ -17,7 +17,7 @@ public class InsertT_USER {
 
 	private static final String insertSql = "INSERT INTO T_USER values(?, ?, ?, ?, ?)";
 
-	public void insertUserTable(T_USER tUser ) throws Exception
+	public void insertUserTable(T_USER tUser) throws Exception
 	{
 		try {
 			// Connectionの作成

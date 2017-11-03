@@ -10,7 +10,6 @@ public class StartConnection {
 		// TODO 自動生成されたメソッド・スタブ
 
 		try {
-
 			ReadCsv rs = new ReadCsv();
 
 			rs.readUserCsv(args[0]);
@@ -18,8 +17,7 @@ public class StartConnection {
 			GetData gd = new GetData();
 
 			// 取得したデータを出力する
-			for (T_USER tUser : gd.getTUser())
-			{
+			for (T_USER tUser : gd.getTUser()) {
 				System.out.println(tUser.USER_NAME);
 			}
 		} catch (Exception e) {

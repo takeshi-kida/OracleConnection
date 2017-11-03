@@ -9,7 +9,7 @@ public class DriverManeger {
 
 	@SuppressWarnings("finally")
 	public Connection getConnection() {
-			try {
+		try {
 			// JDBCドライバクラスのロード
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 
@@ -17,7 +17,7 @@ public class DriverManeger {
 			conn = DriverManager.getConnection(
 					"jdbc:oracle:thin:@" + ConnectionStrings.SERVER_NAME.getValue() + ":1521:"
 							+ ConnectionStrings.SID.getValue(),
-							ConnectionStrings.USER.getValue(), ConnectionStrings.PASS.getValue());
+					ConnectionStrings.USER.getValue(), ConnectionStrings.PASS.getValue());
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 
