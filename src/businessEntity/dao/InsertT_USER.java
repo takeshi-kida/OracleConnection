@@ -7,7 +7,7 @@ import java.sql.Statement;
 import businessEntity.dto.T_USER;
 import businessLogic.DriverManeger;
 
-public class InsertOracle {
+public class InsertT_USER {
 
 	private Connection conn = null;
 	private Statement stmt = null;

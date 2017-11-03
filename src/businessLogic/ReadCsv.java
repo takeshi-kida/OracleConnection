@@ -7,7 +7,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.StringTokenizer;
 
-import businessEntity.dao.InsertOracle;
+import businessEntity.dao.InsertT_USER;
 import businessEntity.dto.T_USER;
 
 public class ReadCsv {
@@ -17,7 +17,7 @@ public class ReadCsv {
 
 			BufferedReader br = new BufferedReader(new FileReader(csv));
 
-			InsertOracle insertOracle = new InsertOracle();
+			InsertT_USER insertOracle = new InsertT_USER();
 
 			// 最終行まで読み込む
 			String line = "";
