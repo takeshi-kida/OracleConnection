@@ -1,24 +1,23 @@
 package businessEntity.dao;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import businessEntity.dto.T_USER;
 import businessLogic.DriverManeger;
 
-public class InsertT_USER {
-
+public class SelectT_USER {
 	private Connection conn = null;
 	private Statement stmt = null;
-	private PreparedStatement ps = null;
 
 	private DriverManeger dm = new DriverManeger();
 
-	private static final String insertSql = "INSERT INTO T_USER values(?, ?, ?, ?, ?)";
+	public List<T_USER> selectT_USER() throws Exception {
+		List<T_USER> getResult = new ArrayList<T_USER>();
 
-	public void insertUserTable(T_USER tUser ) throws Exception
-	{
 		try {
 			// Connectionの作成
 			conn = dm.getConnection();
@@ -28,27 +27,18 @@ public class InsertT_USER {
 
 			// Statementの作成
 			stmt = conn.createStatement();
-
-			ps = conn.prepareStatement(insertSql);
-			ps.setString(1, tUser.USER_ID);
-			ps.setString(2, tUser.PASSWORD);
-			ps.setString(3, tUser.USER_NAME);
-			ps.setInt(4, tUser.AGE);
-			ps.setString(5, tUser.ORG_CD);
-
-			//INSERT文を実行する
-			int result = ps.executeUpdate();
-
-			//処理件数を表示する
-			System.out.println("結果：" + result);
-
-			//コミット
-			conn.commit();
+			// Resultsetの作成
+			ResultSet rset = stmt.executeQuery("select USER_NAME from T_USER");
+			// 取得したデータを出力する
+			while (rset.next()) {
+				System.out.println(rset.getString("USER_NAME"));
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			conn.rollback();
 			throw e;
 		} finally {
+
 			try {
 				/* クローズ処理 */
 				if (stmt != null) {
@@ -64,5 +54,8 @@ public class InsertT_USER {
 				// nop
 			}
 		}
+
+		return getResult;
+
 	}
 }
