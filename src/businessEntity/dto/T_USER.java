@@ -1,4 +1,4 @@
-package dto;
+package businessEntity.dto;
 
 public class T_USER {
 	public String USER_ID;

@@ -7,7 +7,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.StringTokenizer;
 
-import dto.T_USER;
+import businessEntity.dao.InsertOracle;
+import businessEntity.dto.T_USER;
 
 public class ReadCsv {
 	public void readUserCsv(String fleName) throws Exception {
@@ -35,7 +36,7 @@ public class ReadCsv {
 					tUser.ORG_CD = st.nextToken();
 				}
 
-				insertOracle.insertUserTable("INSERT INTO T_USER values(?, ?, ?, ?, ?)", tUser);
+				insertOracle.insertUserTable(tUser);
 			}
 			br.close();
 		} catch (FileNotFoundException e) {

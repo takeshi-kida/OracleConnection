@@ -1,10 +1,11 @@
-package businessLogic;
+package businessEntity.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 
-import dto.T_USER;
+import businessEntity.dto.T_USER;
+import businessLogic.DriverManeger;
 
 public class InsertOracle {
 
@@ -14,12 +15,13 @@ public class InsertOracle {
 
 	private DriverManeger dm = new DriverManeger();
 
-	public void insertUserTable(String sql, T_USER tUser ) throws Exception
+	private String insertSql = "INSERT INTO T_USER values(?, ?, ?, ?, ?)";
+
+	public void insertUserTable(T_USER tUser ) throws Exception
 	{
 		try {
 			// Connectionの作成
 			conn = dm.getConnection();
-			
 
 			//オートコミットはオフにする。
 			conn.setAutoCommit(false);
@@ -27,7 +29,7 @@ public class InsertOracle {
 			// Statementの作成
 			stmt = conn.createStatement();
 
-			ps = conn.prepareStatement(sql);
+			ps = conn.prepareStatement(insertSql);
 			ps.setString(1, tUser.USER_ID);
 			ps.setString(2, tUser.PASSWORD);
 			ps.setString(3, tUser.USER_NAME);
