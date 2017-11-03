@@ -1,4 +1,4 @@
-package applicationlogic;
+package applicationLogic;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -16,11 +16,11 @@ public class StartConnection {
 		DriverManeger dm = new DriverManeger();
 
 		try {
-			
+
 			ReadCsv rs = new ReadCsv();
-			
+
 			rs.readUserCsv();
-			
+
 			conn = dm.getConnection();
 			// Statementの作成
 			Statement stmt = conn.createStatement();
