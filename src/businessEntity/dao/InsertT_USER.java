@@ -1,34 +1,13 @@
 package businessEntity.dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.Statement;
-
 import businessEntity.dto.T_USER;
-import businessLogic.PrivateDriverManeger;
 
-public class InsertT_USER {
-
-	private Connection conn = null;
-	private Statement stmt = null;
-	private PreparedStatement ps = null;
-
-	private PrivateDriverManeger dm = new PrivateDriverManeger();
+public class InsertT_USER extends DaoConnectionManeger {
 
 	private static final String insertSql = "INSERT INTO T_USER values(?, ?, ?, ?, ?)";
 
-	public void insertUserTable(T_USER tUser) throws Exception
-	{
+	public void insertUserTable(T_USER tUser) throws Exception {
 		try {
-			// Connectionの作成
-			conn = dm.getPrivateConnection();
-
-			//オートコミットはオフにする。
-			conn.setAutoCommit(false);
-
-			// Statementの作成
-			stmt = conn.createStatement();
-
 			ps = conn.prepareStatement(insertSql);
 			ps.setString(1, tUser.USER_ID);
 			ps.setString(2, tUser.PASSWORD);
@@ -48,21 +27,6 @@ public class InsertT_USER {
 			e.printStackTrace();
 			conn.rollback();
 			throw e;
-		} finally {
-			try {
-				/* クローズ処理 */
-				if (stmt != null) {
-					stmt.close();
-					stmt = null;
-				}
-
-				if (conn != null) {
-					conn.close();
-					conn = null;
-				}
-			} catch (Throwable e) {
-				// nop
-			}
 		}
 	}
 }

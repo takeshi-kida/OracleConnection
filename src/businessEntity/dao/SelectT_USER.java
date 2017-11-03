@@ -1,31 +1,18 @@
 package businessEntity.dao;
 
-import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 import businessEntity.dto.T_USER;
-import businessLogic.PrivateDriverManeger;
 
-public class SelectT_USER {
-	private static Connection conn = null;
-	private static Statement stmt = null;
-
-	private static PrivateDriverManeger dm = new PrivateDriverManeger();
-
+public class SelectT_USER extends DaoConnectionManeger {
 	private static final String selectAllSql = "select USER_ID, PASSWORD, USER_NAME, AGE, ORG_CD from T_USER";
 
 	public static List<T_USER> selectT_USER() throws Exception {
 		List<T_USER> getResult = new ArrayList<T_USER>();
 
 		try {
-			// Connectionの作成
-			conn = dm.getPrivateConnection();
-
-			// Statementの作成
-			stmt = conn.createStatement();
 			// Resultsetの作成
 			ResultSet rset = stmt.executeQuery(selectAllSql);
 
@@ -46,25 +33,8 @@ public class SelectT_USER {
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;
-		} finally {
-
-			try {
-				/* クローズ処理 */
-				if (stmt != null) {
-					stmt.close();
-					stmt = null;
-				}
-
-				if (conn != null) {
-					conn.close();
-					conn = null;
-				}
-			} catch (Throwable e) {
-				// nop
-			}
 		}
 
 		return getResult;
-
 	}
 }
