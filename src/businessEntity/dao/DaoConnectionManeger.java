@@ -14,7 +14,6 @@ public class DaoConnectionManeger {
 	public DaoConnectionManeger()
 	{
 		try {
-
 			// Connectionの作成
 			// JDBCドライバクラスのロード
 			Class.forName("oracle.jdbc.driver.OracleDriver");
