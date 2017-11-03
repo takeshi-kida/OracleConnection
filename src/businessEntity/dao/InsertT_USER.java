@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.Statement;
 
 import businessEntity.dto.T_USER;
-import businessLogic.DriverManeger;
+import businessLogic.PrivateDriverManeger;
 
 public class InsertT_USER {
 
@@ -13,7 +13,7 @@ public class InsertT_USER {
 	private Statement stmt = null;
 	private PreparedStatement ps = null;
 
-	private DriverManeger dm = new DriverManeger();
+	private PrivateDriverManeger dm = new PrivateDriverManeger();
 
 	private static final String insertSql = "INSERT INTO T_USER values(?, ?, ?, ?, ?)";
 
@@ -21,7 +21,7 @@ public class InsertT_USER {
 	{
 		try {
 			// Connectionの作成
-			conn = dm.getConnection();
+			conn = dm.getPrivateConnection();
 
 			//オートコミットはオフにする。
 			conn.setAutoCommit(false);

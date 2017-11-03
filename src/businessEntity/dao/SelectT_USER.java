@@ -7,13 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import businessEntity.dto.T_USER;
-import businessLogic.DriverManeger;
+import businessLogic.PrivateDriverManeger;
 
 public class SelectT_USER {
 	private static Connection conn = null;
 	private static Statement stmt = null;
 
-	private static DriverManeger dm = new DriverManeger();
+	private static PrivateDriverManeger dm = new PrivateDriverManeger();
 
 	private static final String selectAllSql = "select USER_ID, PASSWORD, USER_NAME, AGE, ORG_CD from T_USER";
 
@@ -22,7 +22,7 @@ public class SelectT_USER {
 
 		try {
 			// Connectionの作成
-			conn = dm.getConnection();
+			conn = dm.getPrivateConnection();
 
 			// Statementの作成
 			stmt = conn.createStatement();

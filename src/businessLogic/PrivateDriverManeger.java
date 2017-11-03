@@ -3,12 +3,12 @@ package businessLogic;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class DriverManeger {
+public class PrivateDriverManeger {
 
 	private static Connection conn = null;
 
 	@SuppressWarnings("finally")
-	public Connection getConnection() {
+	public Connection getPrivateConnection() {
 		try {
 			// JDBCドライバクラスのロード
 			Class.forName("oracle.jdbc.driver.OracleDriver");
